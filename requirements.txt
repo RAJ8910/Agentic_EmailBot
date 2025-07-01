@@ -1,0 +1,6 @@
+langchain
+langgraph
+langchain_groq
+requests
+fastapi
+python-dotenv
