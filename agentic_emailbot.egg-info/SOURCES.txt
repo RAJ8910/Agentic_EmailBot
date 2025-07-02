@@ -1,0 +1,17 @@
+README.md
+pyproject.toml
+setup.py
+agent/__init__.py
+agent/agentic_workflow.py
+agentic_emailbot.egg-info/PKG-INFO
+agentic_emailbot.egg-info/SOURCES.txt
+agentic_emailbot.egg-info/dependency_links.txt
+agentic_emailbot.egg-info/top_level.txt
+config/__init__.py
+notebook/__init__.py
+prompt_library/__init__.py
+prompt_library/prompt.py
+tools/__init__.py
+utils/__init__.py
+utils/config_loader.py
+utils/model_loader.py

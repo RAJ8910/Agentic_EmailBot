@@ -4,3 +4,15 @@ langchain_groq
 requests
 fastapi
 python-dotenv
+pandas
+numpy
+python-dotenv
+pydantic
+langchain_google_genai
+google-generativeai
+google-ai-generativelanguage
+streamlit
+requests
+uvicorn
+
+-e .
