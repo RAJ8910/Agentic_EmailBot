@@ -18,7 +18,7 @@ class ConfigLoader:
         return self.config[key]
 
 
-class ModelLoader(BaseModel):  # Inherit from BaseModel to use Field and model_post_init
+class ModelLoader(BaseModel): 
     model_provider: Literal["groq", "google"] = "groq"
     config: Optional[ConfigLoader] = Field(default=None, exclude=True)
 
@@ -26,7 +26,7 @@ class ModelLoader(BaseModel):  # Inherit from BaseModel to use Field and model_p
         self.config = ConfigLoader()
 
     class Config:
-        arbitrary_types_allowed = True  # lowercase 'a'
+        arbitrary_types_allowed = True 
 
     def load_llm(self):
         """Load the LLM based on the provider and model name."""

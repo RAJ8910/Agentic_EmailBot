@@ -1,1 +1,13 @@
-/.env
+# Environments
+.env
+.venv/
+
+# Python bytecode and caches
+**/__pycache__/
+*.py[co]
+
+# Build artifacts
+build/
+dist/
+wheels/
+*.egg-info/
