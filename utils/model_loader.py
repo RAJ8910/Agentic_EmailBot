@@ -6,7 +6,6 @@ from langchain_groq import ChatGroq
 from langchain_google_genai import ChatGoogleGenerativeAI
 import os
 
-# Load environment variables
 load_dotenv()
 
 class ConfigLoader:
