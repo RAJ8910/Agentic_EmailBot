@@ -19,10 +19,7 @@ An AI-powered email assistant designed for insurance companies to automatically 
   Generates replies by understanding the full email thread and maintaining conversation context.
 
 - 😠 **Sentiment & Tone Detection**  
-  Detects urgency or negative sentiment in customer messages and prioritizes accordingly.
-
-- 🙋 **Human Escalation**  
-  Automatically escalates unclear or complex cases to human agents for review.
+  Detects urgency or negative sentiment in customer messages and prioritizes accordingly if the task fails. 
 
 ---
 

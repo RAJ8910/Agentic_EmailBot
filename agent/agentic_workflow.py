@@ -5,7 +5,7 @@ from langgraph.graph import StateGraph, MessagesState, END, START
 from langgraph.prebuilt import ToolNode, tools_condition
 from tools.weather_info_tool import WeatherInfoTool
 from tools.policy_copy_tool import PolicyCopyTool
-
+from tools.claim_status_tool import ClaimStatusTool
 class GraphBuilder():
     def __init__(self,model_provider: str = "groq"):
         self.model_loader = ModelLoader(model_provider=model_provider)
@@ -14,9 +14,11 @@ class GraphBuilder():
         self.tools = []
        
         self.weather_info_tool = WeatherInfoTool()
+        self.claim_status_tool = ClaimStatusTool()
         self.tools.extend([
               * self.weather_info_tool.weather_tool_list,
-              PolicyCopyTool 
+              PolicyCopyTool,
+              * self.claim_status_tool.claim_status_tool_list
               ])
         
         self.llm_with_tools = self.llm.bind_tools(tools=self.tools)

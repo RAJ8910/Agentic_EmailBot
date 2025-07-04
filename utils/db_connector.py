@@ -47,7 +47,7 @@ class DBConnector:
             self.conn = None
             print("PostgreSQL connection closed.")
 
-    def execute_query(self, query, params=None, fetch_results=False):
+    def execute_query(self, query, params=None, fetch_results=False, fetch_one=False):
         if not self.conn or self.conn.closed:
             print("Database not connected. Attempting to reconnect...")
             try:
@@ -59,21 +59,29 @@ class DBConnector:
                 print("Failed to establish connection for query execution.")
                 return None
 
-            cursor = None
+        cursor = None
         try:
             cursor = self.conn.cursor()
             cursor.execute(query, params)
+            
             if fetch_results:
-                records = cursor.fetchall()
-                return records
+                if cursor.description:
+                    return cursor.fetchall()
+                else:
+                    return []
+            elif fetch_one:
+                if cursor.description:
+                    return cursor.fetchone()
+                else:
+                    return None
             else:
                 self.conn.commit()
-                return None
+                return True
         except Error as e:
             print(f"Error while executing query: {e}")
             if self.conn:
-                self.conn.rollback() # Rollback on error for DML operations
-            raise 
+                self.conn.rollback()
+            return False
         finally:
             if cursor:
                 cursor.close()
