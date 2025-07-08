@@ -6,6 +6,7 @@ from langgraph.prebuilt import ToolNode, tools_condition
 from tools.weather_info_tool import WeatherInfoTool
 from tools.policy_copy_tool import PolicyCopyTool
 from tools.claim_status_tool import ClaimStatusTool
+from tools.rag_tool import get_rag_tool
 class GraphBuilder():
     def __init__(self,model_provider: str = "groq"):
         self.model_loader = ModelLoader(model_provider=model_provider)
@@ -18,11 +19,13 @@ class GraphBuilder():
         self.tools.extend([
               * self.weather_info_tool.weather_tool_list,
               PolicyCopyTool,
-              * self.claim_status_tool.claim_status_tool_list
+              * self.claim_status_tool.claim_status_tool_list,
               ])
         
         self.llm_with_tools = self.llm.bind_tools(tools=self.tools)
-        
+        rag_tool = get_rag_tool(self.llm)
+        self.tools.append(rag_tool)
+        self.llm_with_tools = self.llm.bind_tools(tools=self.tools)
         self.graph = None
         
         self.system_prompt = SYSTEM_PROMPT

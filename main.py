@@ -22,7 +22,6 @@ async def query_email_bot(query: QueryRequest):
         print("Graph saved as graph.png in",os.getcwd())
         messages = {"messages": [query.query]}
         output = react_app.invoke(messages)
-
         if isinstance(output,dict) and "messages" in output:
             final_response = output["messages"][-1].content
         else:

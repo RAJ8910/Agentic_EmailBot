@@ -11,7 +11,11 @@ google-ai-generativelanguage
 streamlit
 uvicorn
 psycopg2-binary
-chromadb
 sentence-transformers
 langchain-community
+ipykernel
+pypdf
+langchain-chroma
+langchain_huggingface
+faiss-cpu
 -e .
