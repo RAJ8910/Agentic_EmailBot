@@ -154,17 +154,13 @@ class ConversationHistory(BaseModel):
     customer_email: str
     customer_message: str
     bot_response: str
-    intent_captured: str
-    status: str
-    response_time_ms: int
-    bot_version: str
-    confidence_score: float
-    channel: str
 
-    # Nullable fields
-    conversation_id: Optional[int] = None
-    related_policy_id: Optional[str] = None
+    # Nullable fields (as per table's "Not Null" column)
+    intent_captured: Optional[str] = None
+    status: Optional[str] = None
     attachments_sent: Optional[str] = None
+    response_time_ms: Optional[float] = None
+    bot_version: Optional[str] = None
     
     class Config:
         extra = "ignore"

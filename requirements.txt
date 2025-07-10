@@ -18,4 +18,5 @@ pypdf
 langchain-chroma
 langchain_huggingface
 faiss-cpu
+streamlit-aggrid
 -e .
