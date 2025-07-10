@@ -91,19 +91,19 @@ class Policy(BaseModel):
 
 # --- Endorsements Table Model ---
 class Endorsement(BaseModel):
-    # Non-nullable fields
+    # Required fields (non-nullable or with default)
     policy_id: str
     type: str
-    request_date: str  # Keep as string
-    status: str
-    old_value: str
-    new_value: str
+    request_date: Optional[str] = None  # Can be omitted to use DB default (now())
+    status: Optional[str] = "pending"
+    old_value: Optional[str] = None
+    new_value: Optional[str] = None
 
     # Nullable fields
     endorsement_id: Optional[int] = None
-    approved_date: Optional[str] = None  # Keep as string
+    approved_date: Optional[str] = None
     remarks: Optional[str] = None
-    
+
     @validator('request_date', 'approved_date', pre=True)
     def convert_date_to_string(cls, v):
         if v is None:
@@ -111,7 +111,7 @@ class Endorsement(BaseModel):
         if isinstance(v, (datetime, date)):
             return v.isoformat()
         return v
-    
+
     class Config:
         extra = "ignore"
 

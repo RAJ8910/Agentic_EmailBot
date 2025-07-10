@@ -7,6 +7,8 @@ from tools.weather_info_tool import WeatherInfoTool
 from tools.policy_copy_tool import PolicyCopyTool
 from tools.claim_status_tool import ClaimStatusTool
 from tools.rag_tool import get_rag_tool
+from tools.endorsement_tool import EndorsementTool
+
 class GraphBuilder():
     def __init__(self,model_provider: str = "groq"):
         self.model_loader = ModelLoader(model_provider=model_provider)
@@ -16,10 +18,12 @@ class GraphBuilder():
        
         self.weather_info_tool = WeatherInfoTool()
         self.claim_status_tool = ClaimStatusTool()
+        self.endorsement_tool = EndorsementTool()
         self.tools.extend([
               * self.weather_info_tool.weather_tool_list,
               PolicyCopyTool,
               * self.claim_status_tool.claim_status_tool_list,
+              * self.endorsement_tool.endorsement_tool_list
               ])
         
         self.llm_with_tools = self.llm.bind_tools(tools=self.tools)

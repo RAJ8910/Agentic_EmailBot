@@ -15,9 +15,6 @@ An AI-powered email assistant designed for insurance companies to automatically 
 - 📚 **RAG-Based General Queries**  
   Answers general insurance-related questions using Retrieval-Augmented Generation (RAG) from internal documents.
 
-- 🧠 **Context-Aware Auto-Replies**  
-  Generates replies by understanding the full email thread and maintaining conversation context.
-
 - 😠 **Sentiment & Tone Detection**  
   Detects urgency or negative sentiment in customer messages and prioritizes accordingly if the task fails. 
 

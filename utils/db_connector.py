@@ -63,7 +63,7 @@ class DBConnector:
         try:
             cursor = self.conn.cursor()
             cursor.execute(query, params)
-            
+            self.conn.commit()
             if fetch_results:
                 if cursor.description:
                     return cursor.fetchall()
@@ -75,7 +75,7 @@ class DBConnector:
                 else:
                     return None
             else:
-                self.conn.commit()
+                
                 return True
         except Error as e:
             print(f"Error while executing query: {e}")
