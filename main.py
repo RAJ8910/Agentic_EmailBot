@@ -11,6 +11,7 @@ app = FastAPI()
 
 class QueryRequest(BaseModel):
     query: str
+    email: str
 
 @app.post("/query")
 async def query_email_bot(query: QueryRequest):
@@ -33,7 +34,7 @@ async def query_email_bot(query: QueryRequest):
         tracking_interaction(
             output=output,
             input_query=query.query,
-            customer_email="test@test.com",
+            customer_email=query.email,
             start_time_ms=start_time, 
             status="success"
         )
@@ -41,7 +42,7 @@ async def query_email_bot(query: QueryRequest):
     except Exception as e:
         tracking_interaction(
             input_query=query.query,
-            customer_email="test@test.com",
+            customer_email=query.email,
             start_time_ms=start_time,
             end_time_ms=end_time,
             status=f"failure :{e}"

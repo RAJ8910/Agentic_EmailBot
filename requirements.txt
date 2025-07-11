@@ -19,4 +19,8 @@ langchain-chroma
 langchain_huggingface
 faiss-cpu
 streamlit-aggrid
+google-api-python-client
+google-auth-httplib2
+google-auth-oauthlib
+
 -e .
